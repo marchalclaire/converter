@@ -11,15 +11,19 @@ const App = () => {
   let rates = 1.139283;
 
   const handleSubmit = event => {
-    event.preventDefault();
-    setCurrency2(currency1 * rates);
+    event.preventDefault(); // Pour empêcher le navigateur de changer de page lors de la soumission du formulaire
+    if (event.target.name === "Currency1") {
+      setCurrency2(currency1 * rates);
+    } else {
+      setCurrency1(currency2 * 0.860717);
+    }
 
-    // Pour empêcher le navigateur de changer de page lors de la soumission du formulaire
+    setCurrency2(currency1 * rates);
   };
 
   return (
     <div className="container">
-      <label className="title">EUR to USD</label>
+      <label className="title">Converter</label>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <div className="input+logo">
@@ -34,7 +38,8 @@ const App = () => {
             />
             <span className="logo">€</span>
           </div>
-          <button type="submit">{"->"}</button>
+          <button type="submit">{"-> € to $"}</button>
+          <button type="submit">{"<- $ to €"}</button>
           <div className="input+logo">
             <input
               placeholder="0"
