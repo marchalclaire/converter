@@ -17,8 +17,6 @@ const App = () => {
     } else {
       setCurrency1(currency2 * 0.860717);
     }
-
-    setCurrency2(currency1 * rates);
   };
 
   return (
